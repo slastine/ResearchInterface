@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script defer>
+        let data = { "humanOrMachine": null, "certainty": null, "selection": null, "explanation": null };
+        function myfunc()
+        {
+            setInterval(getSelection, 1);
+        }
+        function submit()
+        {
+            let explanation = document.getElementById("explanation");
+            data.explanation = explanation.value;
+            console.log(data)
+        }
+        function getSelection() {
+            if (document.getSelection().toString())
+            {
+                let selection = document.getElementById("selection");
+                let explanation = document.getElementById("explanation");
+                selection.innerHTML = document.getSelection();
+                data.selection = document.getSelection().toString();
+                data.explanation = explanation.value;
+
+            }
+        }
+        function humanOrMachine(human)
+        {
+            if (human) {
+                human = document.getElementById("humanButton");
+                machine = document.getElementById("machineButton");
+                human.style.backgroundColor = "#9271c2";
+                machine.style.backgroundColor = "#dcbcd0";
+                data.humanOrMachine = "Human";
+            }
+            else
+            {
+                human = document.getElementById("humanButton");
+                machine = document.getElementById("machineButton");
+                machine.style.backgroundColor = "#9271c2";
+                human.style.backgroundColor = "#dcbcd0";
+                data.humanOrMachine = "Machine";
+            }
+
+
+
+        }
+        function certainty(number)
+        {
+            one = document.getElementById("one");
+            two = document.getElementById("two");
+            three = document.getElementById("three");
+            four = document.getElementById("four");
+            five = document.getElementById("five");
+
+            switch (number)
+            {
+                case 1:
+                    one.style.backgroundColor = "#9271c2";
+                    two.style.backgroundColor = "#dcbcd0";
+                    three.style.backgroundColor = "#dcbcd0";
+                    four.style.backgroundColor = "#dcbcd0";
+                    five.style.backgroundColor = "#dcbcd0";
+                    data.certainty = "Completely unsure";
+                    break;
+                case 2:
+                    one.style.backgroundColor = "#dcbcd0";
+                    two.style.backgroundColor = "#9271c2";
+                    three.style.backgroundColor = "#dcbcd0";
+                    four.style.backgroundColor = "#dcbcd0";
+                    five.style.backgroundColor = "#dcbcd0";
+                    data.certainty = "Somewhat unsure";
+                    break;
+                case 3:
+                    one.style.backgroundColor = "#dcbcd0";
+                    two.style.backgroundColor = "#dcbcd0";
+                    three.style.backgroundColor = "#9271c2";
+                    four.style.backgroundColor = "#dcbcd0";
+                    five.style.backgroundColor = "#dcbcd0";
+                    data.certainty = "Neutral";
+                    break;
+                case 4:
+                    one.style.backgroundColor = "#dcbcd0";
+                    two.style.backgroundColor = "#dcbcd0";
+                    three.style.backgroundColor = "#dcbcd0";
+                    four.style.backgroundColor = "#9271c2";
+                    five.style.backgroundColor = "#dcbcd0";
+                    data.certainty = "Somewhat confident";
+                    break;
+                case 5:
+                    one.style.backgroundColor = "#dcbcd0";
+                    two.style.backgroundColor = "#dcbcd0";
+                    three.style.backgroundColor = "#dcbcd0";
+                    four.style.backgroundColor = "#dcbcd0";
+                    five.style.backgroundColor = "#9271c2";
+                    data.certainty = "Completely confident";
+                    break;
+
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fff2ff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .mainBox {
+            width: 75%;
+            height: 95%;
+            outline-style: solid;
+            outline-width: 3px;
+            outline-color: black;
+            border-radius: 2%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 3%;
+            padding-top: 0%;
+            z-index: 3;
+            padding-bottom: 0%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            overflow: hidden;
+        }
+        .selectionBox {
+            border-bottom-right-radius: 2%;
+            border-top-right-radius: 2%;
+            padding-top: 5%;
+            padding-bottom: 50%;
+            background-color: #9271c2;
+
+            border-left: 5px solid #D7A1F9;
+        }
+        .textBox {
+            height: 100%;
+            border-bottom-left-radius: 2%;
+            border-top-left-radius: 2%;
+            background-color: #fff2ff;
+        }
+        .text {
+            height: 420px;
+            max-height: 420px;
+            padding-top: 5%;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-bottom: 5%;
+            overflow-y: auto;
+        }
+        .prompt {
+            height: 7%;
+            max-height: 7%;
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-top: 3%;
+            padding-bottom: 5%;
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-top: 0%;
+            border-bottom: 5px solid #D7A1F9;
+            overflow-y: auto;
+        }
+        .human-machine-selector
+        {
+            margin-right: 10%;
+            margin-left: 10%;
+            height: 50px;
+        }
+        .human-machine-button {
+            height: 100%;
+            width: 50%;
+            border-radius: 0 !important;
+            background-color: #dcbcd0
+        }
+        .human-machine-button:hover {
+            background-color: #b175ff
+        }
+
+        .confidence-selector {
+            margin-top:10%;
+            margin-left: 10%;
+            margin-right: 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .confidence-button {
+            height: 100%;
+            font-size: .8vw;
+            width: 100%;
+            border-radius: 0 !important;
+            background-color: #dcbcd0;
+            overflow: visible !important;
+            white-space: normal;
+        }
+
+        .confidence-button:hover {
+            background-color: #b175ff
+        }
+
+        .selection {
+            padding-top: 10%;
+            padding-bottom: 10%;
+            padding-left: 10%;
+            padding-right: 10%;
+            background-color: #fff2ff;
+            margin-top: 15%;
+        }
+
+        .explanation {
+            width: 100%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            background-color: #fff2ff;
+            margin-top: 10%;
+        }
+        textarea {
+            resize: none;
+        }
+        .submit {
+            margin-top: 3%;
+            margin-left: 81%;
+            font-size: 1.5vw;
+            background-color: #dcbcd0;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+    </style>
+</head>
+<body onload="myfunc()">
+    <div class="mainBox">
+        <div class="textBox">
+            <div class="prompt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+            <div class="text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mattis vulputate enim nulla aliquet porttitor lacus luctus. Viverra nam libero justo laoreet sit amet cursus. Sed nisi lacus sed viverra tellus in. Nunc lobortis mattis aliquam faucibus. Ornare suspendisse sed nisi lacus sed viverra tellus in hac. Nisi lacus sed viverra tellus in. In fermentum et sollicitudin ac orci. Habitant morbi tristique senectus et netus et malesuada fames ac. Suspendisse potenti nullam ac tortor vitae purus faucibus. Sit amet cursus sit amet dictum. Risus in hendrerit gravida rutrum quisque non. In nulla posuere sollicitudin aliquam ultrices sagittis. Pharetra massa massa ultricies mi quis hendrerit dolor magna eget. Dui vivamus arcu felis bibendum ut tristique et egestas quis.
+
+                Nunc sed id semper risus in hendrerit gravida rutrum quisque. Volutpat odio facilisis mauris sit amet massa. Tellus at urna condimentum mattis. Enim lobortis scelerisque fermentum dui faucibus in ornare quam. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Eu facilisis sed odio morbi. At in tellus integer feugiat scelerisque varius. Amet risus nullam eget felis. Est sit amet facilisis magna. Pulvinar pellentesque habitant morbi tristique. Volutpat blandit aliquam etiam erat velit. Et malesuada fames ac turpis egestas sed. Id semper risus in hendrerit gravida. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Ante metus dictum at tempor commodo ullamcorper. Habitasse platea dictumst vestibulum rhoncus est. Et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Ac ut consequat semper viverra nam libero.
+
+                Nec dui nunc mattis enim ut. Etiam sit amet nisl purus in mollis. A pellentesque sit amet porttitor eget dolor. Interdum varius sit amet mattis vulputate. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Duis at tellus at urna condimentum mattis. Turpis egestas sed tempus urna. Urna nec tincidunt praesent semper feugiat. Id ornare arcu odio ut. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum.
+
+                Curabitur gravida arcu ac tortor dignissim convallis aenean et. Tortor dignissim convallis aenean et. Scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices dui. Sem integer vitae justo eget magna. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor elit. Arcu felis bibendum ut tristique. Aliquet risus feugiat in ante. Euismod in pellentesque massa placerat duis. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Etiam erat velit scelerisque in dictum non consectetur a. Eget velit aliquet sagittis id consectetur purus. Augue neque gravida in fermentum. Vitae semper quis lectus nulla at volutpat diam ut venenatis.
+</div>
+        </div>
+
+        <div class="selectionBox">
+            <div class=" human-machine-selector">
+                <input type="button" class=" human-machine-button" value="Human" id="humanButton" onclick="humanOrMachine(true)"><input type="button" class=" human-machine-button" value="Machine" id="machineButton" onclick="humanOrMachine(false)">
+            </div>
+            <div class="confidence-selector">
+                <input type="button" class=" confidence-button" onclick="certainty(1)" id="one" value="Completely Unsure"><input type="button" onclick="certainty(2)" class=" confidence-button" id="two" value="Somewhat Unsure"><input type="button" onclick="certainty(3)" class=" confidence-button" id="three" value="Neutral"><input type="button" onclick="certainty(4)" class=" confidence-button" id="four" value="Somewhat Confident"><input type="button" class=" confidence-button" id="five" value="Completely Confident" onclick="certainty(5)">
+            </div>
+            <div class=" human-machine-selector">
+                <div class=" selection" id="selection">Select text from the reading section on the left for it to display here.</div>
+                <textarea id="explanation" placeholder="Enter your reasoning for your above selection." class="explanation"></textarea>
+                <button class="submit" onclick="submit()">Submit</button>
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+</html>
